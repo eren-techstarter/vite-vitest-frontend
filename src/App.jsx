@@ -5,6 +5,12 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [name, setName] = useState('')
+  const [greeting, setGreeting] = useState('')
+
+  const handleGreet = () => {
+    setGreeting(`Hello, ${name}!`)
+  }
 
   return (
     <>
@@ -24,6 +30,16 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
+      </div>
+      <div className="greeting-section">
+        <input
+          type="text"
+          placeholder="Enter your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button onClick={handleGreet}>Greet</button>
+        {greeting && <p>{greeting}</p>}
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
